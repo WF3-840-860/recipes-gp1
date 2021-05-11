@@ -3,36 +3,74 @@
 {% block title %}Détails de la recette{% endblock %}
 
 {% block body %}
-        <div class="container">
-            <div class="row justify-content-center m-5">
-                <div class="col-lg-7">
-                <h1>Detail votre nouvelle recette</h1>
-</div>
-</div>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-<form name="articles" method="post">
-    <div id="articles">
-        <div>
-            <label for="articles_title" class="required">Title</label>
-            <input type="text" id="articles_title" name="title" value={{ articles.id }} required="required" maxlength="120" />
-            </div>
-        <div>
-        <label for="articles_content" class="required">Content</label>
-            <textarea id="articles_content" name="content" required="required"></textarea></div>
-        <div>
-        <label for="articles_ingredient" class="required">Ingredient</label>
-            <textarea id="articles_ingredient" name="ingredient" required="required"></textarea></div>
-        <div><label for="articles_duration" class="required">Duration</label>
-        <input type="number" id="articles_duration"
-                name="duration" required="required" /></div>
-        <div><label for="articles_nb_person" class="required">Nb person</label><input type="number"
-                id="articles_nb_person" name="nb_person" required="required" /></div>
-    </div>
-    <button type="submit" class="btn btn-primary btn-block">Ajouter </button>
-    </form>
-                </div>
+        <!-- Receipe Slider -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {# <img src="" alt=""> #}
+                 </div>
             </div>
         </div>
+
+        <!-- Receipe Content Area -->
+        <div class="receipe-content-area d-flex m-auto">
+            <div class="container m-auto">
+
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="receipe-headline my-5">
+                            {# <span>{{ articles.id }} </span> #}
+                            <h1 class="text-center text-uppercase">{{ articles.title }} </h2>
+                            <div class="border-start border-success border-4 p-2">
+                                <h6>Prep: {{ articles.duration }} minutes</h6>
+                                {# <h6>Nombre de personnes: {{ articles.nb_person }}</h6> #}
+                            </div>
+                        </div>
+                    </div>
+
+                    {# <div class="col-12 col-md-4">
+                        <div class="receipe-ratings text-right my-5">
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="btn delicious-btn">For Begginers</a>
+                        </div>
+                    </div> #}
+                </div>
+                <div class="row mb-5">
+                    <!-- Ingredients -->
+                    <div class="col-12 col-lg-4">
+                        <div class="ingredients">
+                            <h4 class="text-danger fw-bold">Ingredients</h4>
+
+                            <!-- Custom Checkbox -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                                <label class="custom-control-label" for="customCheck1">{{ articles.ingredient }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <!-- Single Preparation Step -->
+                        <h4 class="text-danger fw-bold">Préparation</h4>
+                        <div class="single-preparation-step d-flex">
+                            <h4>01.</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            <a href="{{ path('recipes_index') }}">Voir toutes les recettes</a>
+
+
+
 {% endblock %}
