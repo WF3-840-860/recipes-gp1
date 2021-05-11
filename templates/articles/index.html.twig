@@ -29,8 +29,8 @@
                 <td>{{ article.duration }}</td>
                 <td>{{ article.nbPerson }}</td>
                 <td>
-                    <a href="{{ path('recipes_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('recipes_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('articles_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('articles_edit', {'id': article.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('recipes_add') }}">Ajouter une nouvelle recette</a>
+    <a href="{{ path('articles_new') }}">Create new</a>
 {% endblock %}

@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+// use Symfony\Component\HttpFoundation\Session\Session;
+// use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 
@@ -76,5 +76,17 @@ class RecipesController extends AbstractController
 
         return $this->render('recipes/add.html.twig');
       
+    }
+
+    /**
+     * @Route("/recipes/show/{id}", name="recipes_show", methods={"GET"})
+     */
+    public function show(EntityManagerInterface $em, int $id): Response
+    {
+        $repository = $em->getRepository(Articles::class);
+    
+        return $this->render('recipes/show.html.twig', [
+            'articles' => $repository->find($id),
+        ]);
     }
 }
