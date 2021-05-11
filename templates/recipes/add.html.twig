@@ -1,0 +1,56 @@
+
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}Create new Articles{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-light my-4">Ajouter votre nouvelle recette</h3>
+                </div>
+                <div class="card-body">
+                    <form methods="post">
+                        <div class="form-group">
+                            <label for="articles_title" class="required">Titre</label>
+                            <input class="form-control form-control-lg" type="text" id="articles_title" name="title" required="required" maxlength="120" />
+                        </div>
+                        <div class="row my-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="articles_nb_person" class="required">Nombre de persone(s)</label>
+                                    <input class="form-control form-control-lg" type="number" id="articles_nb_person" name="nb_person" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="articles_duration" class="required">Duration (en minutes)</label>
+                                    <input class="form-control form-control-lg" type="number" id="articles_duration" name="duration" required="required" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="articles_ingredient" class="required">Ingrédient</label>
+                            <textarea class="form-control form-control-lg" id="articles_ingredient" name="ingredient" required="required" style="height: 200px"></textarea>
+                        </div>
+
+                        <div class="form-group my-3">
+                            <label for="articles_content" class="required">Description de la recette</label>
+                            <textarea class="form-control form-control-lg" id="articles_content" name="content" required="required" style="height: 300px" ></textarea>
+                        </div>
+
+                        <div class="form-group my-3">
+                            <button type="submit" class="btn btn-primary btn-block mt-5">Ajouter </button>
+                            <a class="btn bg-light btn-block mt-5" href="{{ path('recipes_index') }}">Annuler</a>
+                        </div
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

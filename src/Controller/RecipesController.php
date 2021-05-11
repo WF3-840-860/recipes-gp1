@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Articles;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,7 +56,7 @@ class RecipesController extends AbstractController
                 $recipe->setTitle($post['title']); // Equivalent d'un bindParam()
                 $recipe->setContent($post['content']);
                 $recipe->setIngredient($post['ingredient']);
-                $recipe->setCreatedAt(new \DateTime());
+                $recipe->setCreatedAt(new DateTime());
                 $recipe->setDuration($post['duration']);
                 $recipe->setNbPerson($post['nb_person']);
 
@@ -84,9 +85,9 @@ class RecipesController extends AbstractController
     public function show(EntityManagerInterface $em, int $id): Response
     {
         $repository = $em->getRepository(Articles::class);
-    
+        // dd($repository->findOneBy(['id' => $id]));
         return $this->render('recipes/show.html.twig', [
-            'articles' => $repository->find($id),
+            'article' => $repository->findOneBy(['id' => $id]),
         ]);
     }
 }

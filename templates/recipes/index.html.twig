@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles index{% endblock %}
+{% block title %}Liste des recettes{% endblock %}
 
 {% block body %}
-    <h1>Articles index</h1>
+    <h1>Liste des recettes</h1>
 
     <table class="table">
         <thead>
@@ -25,17 +25,17 @@
                 <td>{{ article.title }}</td>
                 <td>{{ article.content }}</td>
                 <td>{{ article.ingredient }}</td>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ article.createdAt ? article.createdAt|date('d/m/Y H:i') : '' }}</td>
                 <td>{{ article.duration }}</td>
                 <td>{{ article.nbPerson }}</td>
                 <td>
-                    <a href="{{ path('recipes_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('recipes_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('recipes_show', {'id': article.id}) }}">voir</a>
+                    {# <a href="{{ path('recipes_edit', {'id': article.id}) }}">modifier</a> #}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">pas de recette trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
