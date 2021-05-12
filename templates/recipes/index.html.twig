@@ -1,45 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des recettes{% endblock %}
+{% block title %}Page d'accueil
+{% endblock %}
 
 {% block body %}
-    <h1>Liste des recettes</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Ingredient</th>
-                <th>Created_at</th>
-                <th>Duration</th>
-                <th>Nb_person</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</td>
-                <td>{{ article.content }}</td>
-                <td>{{ article.ingredient }}</td>
-                <td>{{ article.createdAt ? article.createdAt|date('d/m/Y H:i') : '' }}</td>
-                <td>{{ article.duration }}</td>
-                <td>{{ article.nbPerson }}</td>
-                <td>
-                    <a href="{{ path('recipes_show', {'id': article.id}) }}">voir</a>
-                    {# <a href="{{ path('recipes_edit', {'id': article.id}) }}">modifier</a> #}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">pas de recette trouvée</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div class="table container">
+		<div class="row">
+			<div><h1 >Mes dernières recettes</h1></div>
+			<div><button type="button" class="btn btn-danger">
+				<a href="{{ path('recipes_add') }}">Ajouter une nouvelle recette</a>
+			</button></div>
 
-    <a href="{{ path('recipes_add') }}">Ajouter une nouvelle recette</a>
+		</div>
+	</div>
+	{% for article in articles %}
+
+
+		<div class="table container">
+			<div class="row">
+				<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+					<div class="card-header">{{ article.createdAt ? article.createdAt|date('d-m-Y H:i') : '' }}</div>
+					<div class="card-body">
+						<h5 class="card-title">{{ article.title }}</h5>
+						<p class="card-text">
+							<a href="{{ path('recipes_show', {'id': article.id}) }}">Voir la recette</a>
+							{# <a href="{{ path('recipes_edit', {'id': article.id}) }}">edit</a> #}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<tr>
+			<td colspan="8">no records found</td>
+		</tr>
+	{% endfor %}
+	{# </table> #}
+
+
 {% endblock %}
