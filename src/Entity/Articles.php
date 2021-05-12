@@ -47,6 +47,11 @@ class Articles
      */
     private $nb_person;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $recipe_image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +125,18 @@ class Articles
     public function setNbPerson(int $nb_person): self
     {
         $this->nb_person = $nb_person;
+
+        return $this;
+    }
+
+    public function getRecipeImage(): ?string
+    {
+        return $this->recipe_image;
+    }
+
+    public function setRecipeImage(string $recipe_image): self
+    {
+        $this->recipe_image = $recipe_image;
 
         return $this;
     }
