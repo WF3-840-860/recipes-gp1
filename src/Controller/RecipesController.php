@@ -31,7 +31,7 @@ class RecipesController extends AbstractController
     /**
      * @Route("/recipes/add", name="recipes_add")
      */
-    public function add(): Response
+    public function add(EntityManagerInterface $em): Response
     {
         if (!empty($_POST)) {
             // dd($_POST);
@@ -49,6 +49,17 @@ class RecipesController extends AbstractController
                 !empty($post['nb_person']) && is_numeric($post['nb_person'])  && $post['nb_person'] > 0
             ) {
 
+                $tmp_name = $_FILES["recipe_image"]["tmp_name"];
+                // verification de fichier
+                // TODO
+                $fichier =  uniqid() . '.jpg' ;
+                // . pathinfo($image, PATHINFO_EXTENSION)
+
+                // On va copier le fichier dans le dossier upload
+                $newfile = $this->getParameter('images_directory'). "/"  . $fichier;
+                move_uploaded_file($tmp_name, $newfile);
+                // $newfile = $this->getParameter('images_directory'). "/" .$fichier;
+               
 
                 // Equivalent du new PDO('mysql:....'); ou du manager
                 $entityManager = $this->getDoctrine()->getManager();
@@ -61,6 +72,7 @@ class RecipesController extends AbstractController
                 $recipe->setCreatedAt(new DateTime());
                 $recipe->setDuration($post['duration']);
                 $recipe->setNbPerson($post['nb_person']);
+                $recipe->setRecipeImage($fichier);
 
                 // Equivalent prepare()
                 $entityManager->persist($recipe);

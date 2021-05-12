@@ -14,7 +14,7 @@
                     <h3 class="text-center font-weight-light my-4">Ajouter votre nouvelle recette</h3>
                 </div>
                 <div class="card-body">
-                    <form methods="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="articles_title" class="required">Titre</label>
                             <input class="form-control form-control-lg" type="text" id="articles_title" name="title" required="required" maxlength="120" />
@@ -44,9 +44,15 @@
                         </div>
 
                         <div class="form-group my-3">
+                            <label for="formFile" class="form-label">Ajouter une illustration</label>
+                            <input class="form-control" name="recipe_image" type="file" id="formFile">
+                        </div>
+
+                        <div class="form-group my-3">
                             <button type="submit" class="btn btn-primary btn-block mt-5">Ajouter </button>
                             <a class="btn bg-light btn-block mt-5" href="{{ path('recipes_index') }}">Annuler</a>
-                        </div
+                        </div>
+
                     </form>
                 </div>
             </div>
