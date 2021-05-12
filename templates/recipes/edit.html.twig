@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des recettes{% endblock %}
+
+{% block body %}
+    <h1>Articles index</h1>
+
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5">
+                        <div class="card-header">
+                            <h3 class="text-center font-weight-light my-4">Modification de recette</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputFirstName">Titre</label>
+                                            <input class="form-control py-4" id="inputFirstName" name="title"
+                                                type="text" placeholder="Titre" value="{{ article.title }}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="small mb-1" for="inputEmailAddress">Durée</label>
+                                    <input class="form-control py-4" id="inputEmailAddress" name="duration" value="{{ article.duration }}"/>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="small mb-1" for="inputEmailAddress">Nombre de personnes</label>
+                                    <input class="form-control py-4" id="inputEmailAddress" name="nb_person" value="{{ article.nbPerson }}"/>
+                                </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputLastName">Ingredients</label>
+                                            <textarea class="form-control py-4" id="inputLastName" name="ingredient"
+                                                type="text"  />{{ article.ingredient }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputMessage">Contenu</label>
+                                        <textarea class="form-control py-4" id="inputMessage" name="content"
+                                            placeholder="Ecrivez votre recette">{{ article.content }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-4 mb-0"><button type="submit" class="btn btn-info">Envoyer</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+      
+ <a href="{{ path('recipes_add') }}">Ajout d'une nouvelle recette</a>
+ <a href="{{ path('recipes_index') }}">Toutes les recettes</a>
+{% endblock %}
