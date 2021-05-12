@@ -17,30 +17,30 @@
                     <form method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="articles_title" class="required">Titre</label>
-                            <input class="form-control form-control-lg" type="text" id="articles_title" name="title" required="required" maxlength="120" />
+                            <input class="form-control form-control-lg" type="text" id="articles_title" value="{{ post.title ?? null }}"  name="title" required="required" maxlength="120" />
                         </div>
                         <div class="row my-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="articles_nb_person" class="required">Nombre de persone(s)</label>
-                                    <input class="form-control form-control-lg" type="number" id="articles_nb_person" name="nb_person" required="required" />
+                                    <label for="articles_nb_person" class="required">Nombre de personne(s)</label>
+                                    <input class="form-control form-control-lg" type="number" id="articles_nb_person" value="{{ post.nb_person ?? "" }}" name="nb_person" required="required" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="articles_duration" class="required">Duration (en minutes)</label>
-                                    <input class="form-control form-control-lg" type="number" id="articles_duration" name="duration" required="required" />
+                                    <input class="form-control form-control-lg" type="number" id="articles_duration" value="{{ post.duration ?? "" }}" name="duration" required="required" />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group my-3">
                             <label for="articles_ingredient" class="required">Ingrédient</label>
-                            <textarea class="form-control form-control-lg" id="articles_ingredient" name="ingredient" required="required" style="height: 200px"></textarea>
+                            <textarea class="form-control form-control-lg" id="articles_ingredient" name="ingredient" required="required" style="height: 200px">{{ post.ingredient ?? null }}</textarea>
                         </div>
 
                         <div class="form-group my-3">
                             <label for="articles_content" class="required">Description de la recette</label>
-                            <textarea class="form-control form-control-lg" id="articles_content" name="content" required="required" style="height: 300px" ></textarea>
+                            <textarea class="form-control form-control-lg" id="articles_content" name="content" required="required"  style="height: 300px" >{{ post.content ?? null }}</textarea>
                         </div>
 
                         <div class="form-group my-3">
