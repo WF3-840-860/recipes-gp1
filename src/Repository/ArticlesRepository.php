@@ -19,11 +19,11 @@ class ArticlesRepository extends ServiceEntityRepository
         parent::__construct($registry, Articles::class);
     }
 
-    // /**
-    //  * @return Articles[] Returns an array of Articles objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Articles[] Returns an array of Articles objects
+     */
+    
+    /*public function findByExampleField($value)
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')
@@ -33,8 +33,8 @@ class ArticlesRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-    }
-    */
+    }*/
+    
 
     /*
     public function findOneBySomeField($value): ?Articles
