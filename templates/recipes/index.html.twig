@@ -5,38 +5,44 @@
 
 {% block body %}
 
-	<div class="table container">
-		<div class="row">
-			<div><h1 >Mes dernières recettes</h1></div>
-			<div><button type="button" class="btn btn-danger">
-				<a href="{{ path('recipes_add') }}">Ajouter une nouvelle recette</a>
-			</button></div>
-
-		</div>
-	</div>
-	{% for article in articles %}
-
-
-		<div class="table container">
-			<div class="row">
-				<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-					<div class="card-header">{{ article.createdAt ? article.createdAt|date('d-m-Y H:i') : '' }}</div>
-					<div class="card-body">
-						<h5 class="card-title">{{ article.title }}</h5>
-						<p class="card-text">
-							<a href="{{ path('recipes_show', {'id': article.id}) }}">Voir la recette</a>
-						    <a href="{{ path('recipes_edit', {'id': article.id}) }}">Modification de la recette</a>
-						</p>
-					</div>
-				</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="">
+				<i class="las la-pizza-slice"></i>Bienbouffer.com</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" id="link" href="{{ path('recipes_add') }}">Ajouter une nouvelle recette</a>
+					</li>
+				</ul>
 			</div>
 		</div>
-	{% else %}
-		<tr>
-			<td colspan="8">no records found</td>
-		</tr>
+	</nav>
+
+
+	<section class="container">
+		<div class="row">
+		{# Insertion de la boucle article pour tous les afficher #}
+	{% for article in articles %}
+		<article class="card col-sm-5 text-white bg-danger m-3" style="max-width: 40rem;">
+			<div class="card-header">{{ article.createdAt ? article.createdAt|date('d-m-Y H:i') : '' }}</div>
+			<div class="card-body">
+				<h5 class="card-title">{{ article.title }}</h5>
+					<p><img class="card-img-top img-fluid" src="{{asset('/uploads/' ~ article.recipeImage)}}" alt="Image" width="175"></p>
+					<p class="card-text text-center">
+					<button id="btnwhite" type="button" class="btn btn btn-outline-light "><a href="{{ path('recipes_show', {'id': article.id}) }}">Détails</a></button>
+						
+					<button id="btnwhite" type="button" class="btn btn-outline-light "> 
+					<a href="{{ path('recipes_edit', {'id': article.id}) }}">Modifier</a></button>
+					</p>
+			</div>
+		</article>
 	{% endfor %}
-	{# </table> #}
+		</div>
+	</section>
 
 
 {% endblock %}

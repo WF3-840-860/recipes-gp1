@@ -1,0 +1,42 @@
+.navbar-brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+}
+
+.card  {
+    border: solid 1px lightcoral;
+}
+.card-header{
+    border : none;
+}
+.btn-danger {
+
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+
+}
+
+.card-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    text-align: center;
+}
+
+#link {
+   text-decoration: none; 
+   co
+}
+
+.card-img-top {
+    border-radius: 5%;
+}
+
+#btnwhite{
+    text-decoration: none!important;
+    
+}
