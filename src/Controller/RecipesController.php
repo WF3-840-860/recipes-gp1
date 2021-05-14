@@ -89,6 +89,7 @@ class RecipesController extends AbstractController
                 foreach($formIsValid['errors'] as $error){
                     $this->addFlash('warning', $error);
                 }
+
                 // redirection vers le formulaire edit avec les données existantes
                 return $this->redirectToRoute('recipes_edit', [
                     'id' => $article->getId(),
@@ -198,7 +199,7 @@ class RecipesController extends AbstractController
             $errors[] = ' Le champ Titre est invalide';
         }
         //On vérifie que le champs title a longueur comprise entre 5 et 120 caractères
-        if (strlen($post['title']) < 5 && strlen($post['title']) > 120){
+        if (strlen($post['title']) < 5 || strlen($post['title']) > 120){
             $errors[] = 'La longueur du champ Titre est comprise entre 5 et 120 caractères';
         }
         //On vérifie que le champs content est rempli
@@ -218,12 +219,12 @@ class RecipesController extends AbstractController
             $errors[] = 'La longueur du champ Ingredient est invalide';
         }
         //On vérifie que le champs duration est rempli et que le champs duration est un entier
-        if ($post['duration'] <= 0 && !is_numeric($post['duration']) ) {
+        if ($post['duration'] <= 0 || !is_numeric($post['duration']) ) {
             $errors[] = ' Le champ Duree est invalide';
         }
 
         //On vérifie que le champs nb_person est rempli et que le champs nb_person est un entier
-        if ($post['nb_person'] <= 0 && !is_numeric($post['nb_person']) ) {
+        if ($post['nb_person'] <= 0 || !is_numeric($post['nb_person']) ) {
             $errors[] = ' Le champ Nombre de personne est invalide';
         }
 
