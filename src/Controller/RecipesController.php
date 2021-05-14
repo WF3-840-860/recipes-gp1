@@ -197,9 +197,9 @@ class RecipesController extends AbstractController
         if (empty($post['title'])) {
             $errors[] = ' Le champ Titre est invalide';
         }
-        //On vérifie que le champs title a longueur minimum de 5 caractères
-        if (strlen($post['title']) < 5){
-            $errors[] = 'La longueur du champ Titre est invalide';
+        //On vérifie que le champs title a longueur comprise entre 5 et 120 caractères
+        if (strlen($post['title']) < 5 && strlen($post['title']) > 120){
+            $errors[] = 'La longueur du champ Titre est comprise entre 5 et 120 caractères';
         }
         //On vérifie que le champs content est rempli
         if (empty($post['content'])) {
@@ -213,35 +213,19 @@ class RecipesController extends AbstractController
         if (empty($post['ingredient'])) {
             $errors[] = ' Le champ Ingredient est invalide';
         }
-        //On vérifie que le champs ingredient a longueur minimum de 5 caractères
-        if (strlen($post['ingredient']) < 5){
+        //On vérifie que le champs ingredient a longueur minimum de 15 caractères
+        if (strlen($post['ingredient']) < 15){
             $errors[] = 'La longueur du champ Ingredient est invalide';
         }
-        //On vérifie que le champs duration est rempli
-        if (empty($post['duration'])) {
+        //On vérifie que le champs duration est rempli et que le champs duration est un entier
+        if ($post['duration'] <= 0 && !is_numeric($post['duration']) ) {
             $errors[] = ' Le champ Duree est invalide';
         }
-        //On vérifie que le champs duration est un entier
-        if (!is_numeric($post['duration']) ){
-            $errors[] = 'Le champ Duree est invalide';
-        }
-        //On vérifie que le champs duration est strictement superieur a 0
-        if ($post['duration'] > 0 ) {
-            $errors[] = ' Le champ Duree doit etre un chiffre superieur a 0';
-        }
-        //On vérifie que le champs nb_person est rempli
-        if (empty($post['nb_person'])) {
+
+        //On vérifie que le champs nb_person est rempli et que le champs nb_person est un entier
+        if ($post['nb_person'] <= 0 && !is_numeric($post['nb_person']) ) {
             $errors[] = ' Le champ Nombre de personne est invalide';
         }
-        //On vérifie que le champs nb_person est un entier
-        if (!is_numeric($post['nb_person']) ){
-            $errors[] = 'Le champ Nombre de personne est invalide';
-        }
-        //On vérifie que le champs nb_person est strictement superieur a 0
-        if ($post['nb_person'] > 0) {
-            $errors[] = ' Le champ Nombre de personne doit etre un chiffre superieur a 0';
-        }
-
 
         // Si des erreurs sont détectés, on revoie un status à false et un tableau d'erreurs
         // sinon on revoie un status à true et un tableau d'erreurs vide
