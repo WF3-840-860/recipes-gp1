@@ -15,6 +15,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class RecipesController extends AbstractController
 {
     /**
+     * la liste des recettes
      * @Route("/recipes", name="recipes_index")
      */
     public function index(EntityManagerInterface $em): Response
@@ -28,11 +29,14 @@ class RecipesController extends AbstractController
     
 
     /**
+     *  ajouter une recette
      * @Route("/recipes/add", name="recipes_add")
      */
     public function add(EntityManagerInterface $em): Response
     {
+        // On vérifie que mon formulaire soit rempli
         if(!empty ($_POST)){
+
             $post = array_map('trim', array_map('strip_tags', $_POST));
 
             $article = new Articles();  // Je prépare l'instance de classe (donc un objet)
@@ -62,6 +66,7 @@ class RecipesController extends AbstractController
     }
 
     /**
+     * ajouter une recette
      * @Route("/recipes/edit/{id}", name="recipes_edit", methods={"POST","GET"} )
      */
     public function edit(EntityManagerInterface $em, int $id): Response
@@ -216,24 +221,24 @@ class RecipesController extends AbstractController
         if (empty($post['duration'])) {
             $errors[] = ' Le champ Duree est invalide';
         }
-        //On vérifie que le champs duration est strictement superieur a 0
+        //On vérifie que le champs duration est un entier
         if (!is_numeric($post['duration']) ){
             $errors[] = 'Le champ Duree est invalide';
         }
-        //On vérifie que le champs duration est un entier
-        if (empty($post['duration'] > 0 )) {
+        //On vérifie que le champs duration est strictement superieur a 0
+        if ($post['duration'] > 0 ) {
             $errors[] = ' Le champ Duree doit etre un chiffre superieur a 0';
         }
         //On vérifie que le champs nb_person est rempli
         if (empty($post['nb_person'])) {
             $errors[] = ' Le champ Nombre de personne est invalide';
         }
-        //On vérifie que le champs nb_person est strictement superieur a 0
+        //On vérifie que le champs nb_person est un entier
         if (!is_numeric($post['nb_person']) ){
             $errors[] = 'Le champ Nombre de personne est invalide';
         }
-        //On vérifie que le champs nb_person est un entier
-        if (empty($post['nb_person'] > 0)) {
+        //On vérifie que le champs nb_person est strictement superieur a 0
+        if ($post['nb_person'] > 0) {
             $errors[] = ' Le champ Nombre de personne doit etre un chiffre superieur a 0';
         }
 
