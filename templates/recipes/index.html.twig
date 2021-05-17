@@ -17,6 +17,38 @@
 					<li class="nav-item">
 						<a class="nav-link" id="link" href="{{ path('recipes_add') }}">Ajouter une nouvelle recette</a>
 					</li>
+
+					{# <?php if (isset($_SESSION['user'])): ?> #}
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						{# <i class="fa fa-user"></i> <?= $_SESSION['user']['firstname'] ?> #}
+					</a>
+
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						{# <li><a class="dropdown-item" href="profil.php">Mon profil</a></li> #}
+						<li>
+						<hr class="dropdown-divider">
+						</li>
+						<li><a class="dropdown-item" href="{{ path('app_logout') }}"><i class="material-icons">&#xE8AC;</i>Se déconnecter</a>
+						</li>
+					</ul>
+					{# <?php endif ?> #}
+					</li>
+
+					{# <?php if (!isset($_SESSION['user'])): ?> #}
+					<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_register') }}">Devenir client</a>
+					</li>
+					<li class="nav-item">
+					<a id="connect" class="nav-link" href="{{ path('app_login') }}">Mon Espace</a>
+					</li>
+
+					{# <?php endif ?> #}
+
+
+
+
 				</ul>
 			</div>
 		</div>

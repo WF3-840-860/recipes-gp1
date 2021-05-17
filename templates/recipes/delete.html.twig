@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}Supprimer la recette{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <form method="post">
+                <p> Vous êtes sur le point de supprimer la recette 
+                <br>&laquo; {{recipe.title}} &raquo;</p>
+                <p> Attention la suprresion est définitive !!!</p>
+
+
+                <div class="form-group my-3">
+
+                    <a class="btn bg-light btn-block mt-5" href="{{ path('recipes_index') }}">Annuler</a>
+                    <input type="hidden" name="confirm" value="yes">
+                    <button type="submit" class="btn btn-primary btn-block mt-5">Supprimer </button>
+
+
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
