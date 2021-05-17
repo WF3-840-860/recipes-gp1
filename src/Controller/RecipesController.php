@@ -16,7 +16,7 @@ class RecipesController extends AbstractController
 {
     /**
      * la liste des recettes
-     * @Route("/recipes", name="recipes_index")
+     * @Route("/", name="recipes_index")
      */
     public function index(EntityManagerInterface $em): Response
     {
