@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id = 'dsTable' >
+        <tr id=2>
+           <td> Spouse </td>
+           <td> 1980-22-03 </td>
+           <td> female </td>
+           <td> <input type="button" id ="addDep" value="Add" onclick = "add()"> </td>
+           <td> <input type="button" id ="deleteDep" value="Delete" onclick = "deleteRow(2)">  </td>
+        </tr>
+         <tr id=3>
+           <td> Child </td>
+           <td> 2008-23-06 </td>
+           <td> female </td>
+           <td> <input type="button" id ="addDep" value="Add" onclick = "add()"></td>
+           <td>  <input type="button" id ="deleteDep" value="Delete" onclick = "deleteRow(3)"> </td>
+        </tr>
+     </table>
+
+     <script>
+         var id = 4; // inital number of rows plus one
+            function addRow(){
+            // add a new tr with id 
+            // increment id;
+            }
+
+            function deleteRow(id){
+            $("#" + id).remove();
+            }
+     </script>
+
+</body>
+</html>

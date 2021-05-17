@@ -151,7 +151,7 @@ class RecipesController extends AbstractController
                 // succes
                 $article->setTitle($post['title']);
                 $article->setContent($post['content']);
-                $article->setIngredient($post['ingredient']);
+                $article->setIngredient([$post['ingredient']]);
                 $article->setCreatedAt(new \DateTime());
                 $article->setDuration($post['duration']);
                 $article->setNbPerson($post['nb_person']);

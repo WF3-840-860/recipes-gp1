@@ -28,9 +28,9 @@ class Articles
     private $content;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json")
      */
-    private $ingredient;
+    private $ingredient=[];
 
     /**
      * @ORM\Column(type="datetime")
@@ -87,12 +87,17 @@ class Articles
         return $this;
     }
 
-    public function getIngredient(): ?string
+    public function getIngredient(): ?array
     {
-        return $this->ingredient;
+        $ingredient = $this->ingredient;
+        $ingredient[] = '';
+
+        return array_unique($ingredient);
+
+        // return $this->ingredient;
     }
 
-    public function setIngredient(string $ingredient): self
+    public function setIngredient(array $ingredient): self
     {
         $this->ingredient = $ingredient;
 
