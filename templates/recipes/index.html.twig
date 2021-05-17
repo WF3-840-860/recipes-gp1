@@ -17,36 +17,37 @@
 					<li class="nav-item">
 						<a class="nav-link" id="link" href="{{ path('recipes_add') }}">Ajouter une nouvelle recette</a>
 					</li>
+				
+					{% if app.user %}
+						<li class="nav-item dropdown">
+							<a
+								class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								 Bonjour {{ app.user.firstname }}{# <i class="fa fa-user"></i> <?= $_SESSION['user']['firstname'] ?> #}
+							</a>
 
-					{# <?php if (isset($_SESSION['user'])): ?> #}
-					<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false">
-						{# <i class="fa fa-user"></i> <?= $_SESSION['user']['firstname'] ?> #}
-					</a>
+							<ul
+								class="dropdown-menu" aria-labelledby="navbarDropdown">
+								{# <li><a class="dropdown-item" href="profil.php">Mon profil</a></li> #}
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li>
+									<a class="dropdown-item" href="{{ path('app_logout') }}">
+										<i class="material-icons">&#xE8AC;</i>Se déconnecter</a>
+								</li>
+							</ul>
 
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						{# <li><a class="dropdown-item" href="profil.php">Mon profil</a></li> #}
-						<li>
-						<hr class="dropdown-divider">
 						</li>
-						<li><a class="dropdown-item" href="{{ path('app_logout') }}"><i class="material-icons">&#xE8AC;</i>Se déconnecter</a>
+					{% else %}
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
 						</li>
-					</ul>
-					{# <?php endif ?> #}
-					</li>
+						<li class="nav-item">
+							<a id="connect" class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+						</li>
 
-					{# <?php if (!isset($_SESSION['user'])): ?> #}
-					<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_register') }}">Devenir client</a>
-					</li>
-					<li class="nav-item">
-					<a id="connect" class="nav-link" href="{{ path('app_login') }}">Mon Espace</a>
-					</li>
-
-					{# <?php endif ?> #}
-
-
+					{% endif %}
 
 
 				</ul>
@@ -56,23 +57,27 @@
 
 
 	<section class="container">
-		<div class="row">
-		{# Insertion de la boucle article pour tous les afficher #}
-	{% for article in articles %}
-		<article class="card col-sm-5 text-white bg-danger m-3" style="max-width: 40rem;">
-			<div class="card-header">{{ article.createdAt ? article.createdAt|date('d-m-Y H:i') : '' }}</div>
-			<div class="card-body">
-				<h5 class="card-title">{{ article.title }}</h5>
-					<p><img class="card-img-top img-fluid" src="{{asset('/uploads/' ~ article.recipeImage)}}" alt="Image" width="175"></p>
-					<p class="card-text text-center">
-					<button id="btnwhite" type="button" class="btn btn btn-outline-light "><a href="{{ path('recipes_show', {'id': article.id}) }}">Détails</a></button>
-						
-					<button id="btnwhite" type="button" class="btn btn-outline-light "> 
-					<a href="{{ path('recipes_edit', {'id': article.id}) }}">Modifier</a></button>
-					</p>
-			</div>
-		</article>
-	{% endfor %}
+		<div
+			class="row">
+			{# Insertion de la boucle article pour tous les afficher #}
+			{% for article in articles %}
+				<article class="card col-sm-5 text-white bg-danger m-3" style="max-width: 40rem;">
+					<div class="card-header">{{ article.createdAt ? article.createdAt|date('d-m-Y H:i') : '' }}</div>
+					<div class="card-body">
+						<h5 class="card-title">{{ article.title }}</h5>
+						<p><img class="card-img-top img-fluid" src="{{asset('/uploads/' ~ article.recipeImage)}}" alt="Image" width="175"></p>
+						<p class="card-text text-center">
+							<button id="btnwhite" type="button" class="btn btn btn-outline-light ">
+								<a href="{{ path('recipes_show', {'id': article.id}) }}">Détails</a>
+							</button>
+
+							<button id="btnwhite" type="button" class="btn btn-outline-light ">
+								<a href="{{ path('recipes_edit', {'id': article.id}) }}">Modifier</a>
+							</button>
+						</p>
+					</div>
+				</article>
+			{% endfor %}
 		</div>
 	</section>
 

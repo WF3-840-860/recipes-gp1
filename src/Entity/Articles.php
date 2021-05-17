@@ -52,6 +52,12 @@ class Articles
      */
     private $recipe_image;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $users;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +143,18 @@ class Articles
     public function setRecipeImage(string $recipe_image): self
     {
         $this->recipe_image = $recipe_image;
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }

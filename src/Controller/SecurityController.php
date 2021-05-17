@@ -18,6 +18,9 @@ class SecurityController extends AbstractController
         //     return $this->redirectToRoute('target_path');
         // }
 
+       //dd($this->getUser()); // $this->getUser() contient les informations de l'utilisateur connecté
+        // {{ app.user.getFirstname }}
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
