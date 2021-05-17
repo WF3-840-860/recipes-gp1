@@ -155,6 +155,7 @@ class RecipesController extends AbstractController
                 $article->setCreatedAt(new \DateTime());
                 $article->setDuration($post['duration']);
                 $article->setNbPerson($post['nb_person']);
+                $article->setUsers($this->getUser());
 
                 // Update de l'image que si elle existe ou si elle est différente
                 if(!empty($article->getRecipeImage()) && $article->getRecipeImage() != $uploadIsValid['file']){
