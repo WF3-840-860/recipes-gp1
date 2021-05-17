@@ -71,7 +71,7 @@
 								<a href="{{ path('recipes_show', {'id': article.id}) }}">Détails</a>
 							</button>
 
-							{% if app.user and  app.user.id == article.users.id %}
+							{% if is_granted('ROLE_ADMIN') or (app.user and  app.user.id == article.users.id) %}
 
 								<button id="btnwhite" type="button" class="btn btn-outline-light ">
 									<a href="{{ path('recipes_edit', {'id': article.id}) }}">Modifier</a>
