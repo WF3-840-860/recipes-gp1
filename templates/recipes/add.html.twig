@@ -6,14 +6,14 @@
 {% block title %}Create new Articles{% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container" style="background-image: url('../media/etoile.jpg')">
     <div class="row justify-content-center">
         <div class="col-lg-7">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header">
-                    <h3 class="text-center font-weight-light my-4">Ajouter votre nouvelle recette</h3>
+                <div class="card-header" style="background-image: url('../media/etoile.jpg')";>
+                    <h3 class="text-center font-weight-light my-4" style="color: beige;">Ajouter votre nouvelle recette</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="background-image: url('../media/etoile.jpg')">
                     <form method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="articles_title" class="required">Titre</label>
@@ -48,7 +48,7 @@
                             <input class="form-control" name="recipe_image" type="file" id="formFile">
                         </div>
 
-                        <div class="form-group my-3">
+                        <div class="form-group my-3" style="display: flex;justify-content: space-around;">
                             <button type="submit" class="btn btn-primary btn-block mt-5">Ajouter </button>
                             <a class="btn bg-light btn-block mt-5" href="{{ path('recipes_index') }}">Annuler</a>
                         </div>

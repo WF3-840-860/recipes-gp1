@@ -29,7 +29,6 @@ h1 {
 
 #link {
    text-decoration: none; 
-   co
 }
 
 .card-img-top {
@@ -40,3 +39,29 @@ h1 {
     text-decoration: none!important;
     
 }
+body{
+    font-family: 'Itim', cursive; 
+    background-image: url('../media/etoile.jpg');
+}
+.bg-info{
+    background-color: #0d46f08f !important;
+}
+
+.required{
+    color: beige;
+}
+.mb-2{
+    margin-bottom: 0;
+}
+.form-label{
+    color: beige;
+}
+#form-group #my-3{
+    display: flex;
+    justify-content: space-around;
+}
+#articles_ingredient{
+    background-image: url("../media/cuisine.png");
+}
+
+
