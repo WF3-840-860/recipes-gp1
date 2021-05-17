@@ -40,7 +40,9 @@
 
                     <!-- Custom Checkbox -->
                     <div class="custom-control custom-checkbox">
-                        <p>{{ article.ingredient |nl2br}} </p>
+                        {% for ingredient in article.ingredient %}
+                        <p>{{ ingredient}} </p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
